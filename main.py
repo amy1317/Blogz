@@ -60,9 +60,9 @@ def create_new_post():
         
         else:
             blogs = Blog.query.all()
-            return render_template('new_post.html', title="Build a Blog!", blogs=blogs,
+            return render_template('newpost.html', title="Build a Blog!", blogs=blogs,
                 blog_title=blog_title, title_error=title_error, 
                 blog_body=blog_body, body_error=body_error)
 
 if __name__ == '__main__':
- app.run()
+    app.run()

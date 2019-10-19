@@ -4,9 +4,9 @@
 
     <h2>New Blog Entry</h2>
     <form method='POST' action="/newpost">
-        <label for='title'>
+        <label for='blog_title'>
             New Blog Title:<br>
-            <input name="title" type="text" value='{{blog_title}}' />
+            <input name="blog_title" type="text" value='{{blog_title}}' />
             <span class="error">{{title_error}}</span>
         </label>
         <br>
@@ -14,7 +14,7 @@
         <br>
         <label for='body'>
             Blog Entry Here:<br>
-            <textarea name="body" type="text">{{blog_body}}</textarea>
+            <textarea name="body" type="text">{{body}}</textarea>
             <span class="error">{{body_error}}</span>
         </label>
         <br>

@@ -154,54 +154,6 @@ def new_post():
    
     return render_template('newpost.html',title = "Add a new post", blog_title = blog_title, body = body, title_error = title_error, body_error = body_error)
 
-
-@app.route('/signup', methods=['POST', 'GET'])
-def create_signup():  
-    
-    username = ""
-    username_error = ""
-    password_error = ""
-    verify_error = ""
-
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        verify = request.form['verify']
-
-        
-
-        existing_user = User.query.filter_by(username=username).first()
-        
-        
-    if len(username) < 3 :
-        username_error = 'Username must be longer than 3 characters'
-        if username == '':
-             username_error = "Please enter an username"
-
-    
-    if len(password) < 3:
-        password_error = 'Password invalid.'
-        if pasword == "":
-              password_error = "Please enter valid password."
-    
-    if password != verify:
-        password_error = 'Passwords do not match.'
-        password_verify = 'Passwords do not match.'
-       
-    if not username_error and not password_error and not verify_error:
-            if not existing_user:
-                new_user = User(username, password)
-                db.session.add(new_user)
-                db.session.commit()
-                session['username'] = username
-                return redirect('/newpost')
-            else:
-                username_error = "Username is already claimed."
-
-    return render_template('signup.html', username = username, 
-    username_error = username_error, password_error = password_error, 
-    verify_error = verify_error)
-
  
 @app.route('/logout')
 def logout():
